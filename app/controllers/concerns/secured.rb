@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module Secured
   extend ActiveSupport::Concern
 
   SCOPES = {
     '/api/private-scoped' => ['read:messages'] # scopeが必要なrequestはこのように記載
-  }
+  }.freeze
 
   included do
     before_action :authenticate_request!
@@ -37,7 +39,7 @@ module Secured
   def scope_included
     # The intersection of the scopes included in the given JWT and the ones in the SCOPES hash needed to access
     # the PATH_INFO, should contain at least one element
-    if SCOPES[request.env['PATH_INFO']] == nil
+    if SCOPES[request.env['PATH_INFO']].nil?
       true
     else
       (String(@auth_payload['scope']).split(' ') & (SCOPES[request.env['PATH_INFO']])).any?
