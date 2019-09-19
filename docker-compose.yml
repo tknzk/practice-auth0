@@ -1,0 +1,10 @@
+version: '3'
+services:
+  postgres:
+    image: postgres
+    # environment:
+    ports:
+      - 25432:5432
+    volumes:
+      - ./tmp/db/data:/data
+      - ./tmp/db/storage:/var/lib/postgresql/data
