@@ -3,27 +3,25 @@
 module Secured
   extend ActiveSupport::Concern
 
-  included do
-    before_action :logged_in_using_omniauth?
-  end
-
-  def logged_in_using_omniauth?
-    redirect_to '/' unless session[:userinfo].present?
-  end
-
   SCOPES = {
     '/api/private-scoped' => ['read:messages'] # scopeが必要なrequestはこのように記載
   }.freeze
 
   included do
-    before_action :authenticate_request!
+    before_action :logged_in_using_omniauth?
+    # before_action :authenticate_request!
   end
 
-  def current_user
-    @user
-  end
+  # def current_user
+  #   @user
+  # end
 
   private
+
+  def logged_in_using_omniauth?
+    redirect_to '/' unless session[:userinfo].present?
+  end
+
 
   def authenticate_request!
     @auth_payload, @auth_header = auth_token
