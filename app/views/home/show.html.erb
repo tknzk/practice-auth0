@@ -1,9 +1,23 @@
 <h1>Home#show</h1>
-<p>Find me in app/views/home/show.html.erb</p>
 
-<!-- app/views/home/show.html.erb -->
-
-<img src="https://cdn.auth0.com/styleguide/1.0.0/img/badge.svg">
 <h1>RoR Auth0 Sample</h1>
 <p>Step 1 - Login.</p>
-<%= button_to 'Login', 'auth/auth0', method: :post %>
+<img src="https://cdn.auth0.com/styleguide/1.0.0/img/badge.svg">
+
+<% if session[:userinfo].present? %>
+  <p>
+    <a href="./dashboard">dashboard</a>
+  </p>
+  <p>
+    <a href="./logout">logout</a>
+  </p>
+<% else %>
+  <p>
+    <%= button_to 'Login', 'auth/auth0', method: :post, class: "btn" %>
+  </p>
+<% end %>
+
+<% if flash[:notice].present? %>
+  <%= flash[:notice] %>
+<% end %>
+

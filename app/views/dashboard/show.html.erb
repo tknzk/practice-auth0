@@ -1,5 +1,28 @@
 <h1>Dashboard#show</h1>
 <p>Find me in app/views/dashboard/show.html.erb</p>
 
-<%= session[:userinfo].inspect %>
 
+<% if session[:userinfo].present? %>
+  <p>
+    name: <%= session[:userinfo]['info']['name'] %>
+  </p>
+  <p>
+    nickname: <%= session[:userinfo]['info']['nickname'] %>
+  </p>
+  <p>
+    email: <%= session[:userinfo]['info']['email'] %>
+  </p>
+  <p>
+    image: <img src="<%= session[:userinfo]['info']['image'] %>" />
+  </p>
+  <hr />
+  <%= session[:userinfo].inspect %>
+
+  <hr />
+  <p>
+    <a href="./">home</a>
+  </p>
+  <p>
+    <a href="./logout">logout</a>
+  </p>
+<% end %>

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'home#show'
   get 'home/show'
   get 'dashboard' => 'dashboard#show'
-
+  get 'logout' => 'home#logout'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
