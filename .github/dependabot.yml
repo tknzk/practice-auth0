@@ -1,0 +1,22 @@
+version: 2
+updates:
+- package-ecosystem: bundler
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "20:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: rails
+    versions:
+    - 6.1.2
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "20:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@rails/activestorage"
+    versions:
+    - 6.1.2
