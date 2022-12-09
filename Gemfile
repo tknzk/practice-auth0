@@ -27,7 +27,7 @@ gem 'jbuilder', '~> 2.11'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'jwt'
-gem 'omniauth-auth0', '~> 3.0'
+gem 'omniauth-auth0', '~> 3.1'
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
 
 group :development, :test do
